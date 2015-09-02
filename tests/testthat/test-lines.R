@@ -20,7 +20,9 @@ test_that("lines don't have fill", {
 
 
 test_that("lines lty becomes stroke-dasharray", {
-  # base graphics
+  #ref ?par Line Type Specification
+  #"The five standard dash-dot line types (lty = 2:6) correspond to c("44", "13", "1343", "73", "2262")"
+
   x <- xmlSVG(mini_plot(1:3, lty = 1, type = "l"))
   expect_equal(
     xml_attr(xml_find_one(x,"//polyline"), "stroke-dasharray"),
@@ -34,6 +36,6 @@ test_that("lines lty becomes stroke-dasharray", {
   expect_equal(dash_array(2), "4,4")
   expect_equal(dash_array(3), "1,3")
   expect_equal(dash_array(4), "1,3,4,3")
-  expect_equal(dash_array(5), "2,2,6,2")
-  expect_equal(dash_array(6), "7,3")
+  expect_equal(dash_array(5), "7,3")
+  expect_equal(dash_array(6), "2,2,6,2")
 })
